@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<main class="max-w-6xl mx-auto px-4 py-8">
+    <h2 class="text-3xl font-bold text-slate-900">Welcome, {{ username }}</h2>
+    <p class="text-slate-500 mb-8 mt-1">Manage students, teachers, courses and enrollments.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+            <span class="text-slate-500 text-sm font-semibold">Students</span>
+            <div class="text-4xl font-extrabold text-slate-900 mt-2">{{ student_count }}</div>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+            <span class="text-slate-500 text-sm font-semibold">Teachers</span>
+            <div class="text-4xl font-extrabold text-slate-900 mt-2">{{ teacher_count }}</div>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+            <span class="text-slate-500 text-sm font-semibold">Courses</span>
+            <div class="text-4xl font-extrabold text-slate-900 mt-2">{{ course_count }}</div>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+            <span class="text-slate-500 text-sm font-semibold">Enrollments</span>
+            <div class="text-4xl font-extrabold text-slate-900 mt-2">{{ enrollment_count }}</div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <a href="/students" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-xl text-center shadow-sm">Students</a>
+        <a href="/teachers" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 px-6 rounded-xl text-center shadow-sm">Teachers</a>
+        <a href="/courses" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-xl text-center shadow-sm">Courses</a>
+        <a href="/enrollments" class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 px-6 rounded-xl text-center shadow-sm">Enrollments</a>
+    </div>
+</main>
+{% endblock %}

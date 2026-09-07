@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Edit Student{% endblock %}
+
+{% block content %}
+<main class="max-w-md mx-auto px-4 py-8">
+    <div class="bg-white p-6 rounded-xl border shadow-sm">
+        <h2 class="text-xl font-bold mb-4">Edit Student</h2>
+        <form method="POST">
+            <input type="text" name="name" value="{{ student[1] }}" required class="w-full p-3 border rounded-lg mb-4">
+            <input type="number" name="age" value="{{ student[2] }}" required class="w-full p-3 border rounded-lg mb-6">
+            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-bold">Update Student</button>
+        </form>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Courses{% endblock %}
+
+{% block content %}
+<main class="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="bg-white p-6 rounded-xl border shadow-sm">
+        <h3 class="text-lg font-bold mb-4">Add Course</h3>
+        <form method="POST">
+            <input type="text" name="name" placeholder="Course Name" required class="w-full p-3 border rounded-lg mb-4">
+            <select name="teacher_id" class="w-full p-3 border rounded-lg mb-6">
+                <option value="">Select Teacher</option>
+                {% for t in teachers %}
+                <option value="{{ t[0] }}">{{ t[1] }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="w-full bg-purple-600 text-white py-3 rounded-lg font-bold">Add Course</button>
+        </form>
+    </div>
+    <div class="md:col-span-2 bg-white rounded-xl border shadow-sm p-4">
+        <h3 class="text-lg font-bold mb-4">Courses List</h3>
+        <ul class="divide-y">
+            {% for c in courses %}
+            <li class="py-3 flex justify-between">
+                <span class="font-bold">{{ c[1] }}</span>
+                <span class="text-slate-500">Teacher: {{ c[2] or 'None' }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</main>
+{% endblock %}

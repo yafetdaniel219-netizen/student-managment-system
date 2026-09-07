@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Students{% endblock %}
+
+{% block content %}
+<main class="max-w-6xl mx-auto px-4 py-8">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold">Students List</h2>
+        <a href="/students/add" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold">+ Add Student</a>
+    </div>
+
+    <form action="/students/search" method="GET" class="mb-6 flex gap-2">
+        <input type="text" name="keyword" value="{{ keyword or '' }}" placeholder="Search by name..." class="p-2 border rounded-lg w-64">
+        <button type="submit" class="bg-slate-800 text-white px-4 py-2 rounded-lg">Search</button>
+    </form>
+
+    <div class="bg-white rounded-xl shadow-sm border overflow-hidden">
+        <table class="w-full text-left">
+            <thead class="bg-slate-50 border-b">
+                <tr>
+                    <th class="p-4">ID</th>
+                    <th class="p-4">Name</th>
+                    <th class="p-4">Age</th>
+                    <th class="p-4">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y">
+                {% for s in students %}
+                <tr>
+                    <td class="p-4">{{ s[0] }}</td>
+                    <td class="p-4 font-semibold">{{ s[1] }}</td>
+                    <td class="p-4">{{ s[2] }}</td>
+                    <td class="p-4 flex gap-4">
+                        <a href="/students/edit/{{ s[0] }}" class="text-blue-600 font-bold">Edit</a>
+                        <form action="/students/delete/{{ s[0] }}" method="POST">
+                            <button type="submit" class="text-red-500 font-bold" onclick="return confirm('Delete this student?')">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+{% endblock %}
